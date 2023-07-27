@@ -13,19 +13,18 @@ namespace Digital_Audio_Workstation
         
         public void Play(string filePath)
         {
-            Debug.WriteLine("PATH: " + filePath);
-
             waveOut = new WaveOut();
-
             waveOut.DeviceNumber = 0;
-
 
             AudioFileReader audioFileReader = new AudioFileReader(filePath);
 
             waveOut.Init(audioFileReader);
-
             waveOut.Play();
+        }
 
+        public void Stop()
+        {
+            waveOut.Stop();
         }
 
         public void Resume()
@@ -38,6 +37,16 @@ namespace Digital_Audio_Workstation
             waveOut.Pause();
         }
 
+        public void Mute()
+        {
+            waveOut.Volume = 0;
+        }
+
+        public void UnMute()
+        {
+            waveOut.Volume = 1;
+        }
+
         public void Record(string fileName)
         {
             wave.DeviceNumber = 0;
@@ -46,19 +55,19 @@ namespace Digital_Audio_Workstation
 
             wave.DataAvailable += Wave_DataAvailable;
 
-            wave.RecordingStopped += Wave_RecordingStopped;
 
             string pathToDesktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             string filePath = pathToDesktop + $"/{fileName}.wav";
             writer = new WaveFileWriter(filePath, wave.WaveFormat);
 
+            wave.RecordingStopped += Wave_RecordingStopped;
             wave.StartRecording();
-
         }
 
         public void StopRecording()
         {
             wave.StopRecording();
+            writer.Close();
             Application.Exit();
         }
 

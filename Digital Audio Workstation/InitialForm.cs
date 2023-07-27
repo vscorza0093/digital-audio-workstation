@@ -21,7 +21,6 @@ namespace Digital_Audio_Workstation
 
         private void button1_Click(object sender, EventArgs e)
         {
-
             fileName = fileName_textBox.Text;
             var myForm = new DigitalAudioWorkstation(fileName);
             this.Hide();
