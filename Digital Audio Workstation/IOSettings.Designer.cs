@@ -39,10 +39,11 @@
             // input_cbox
             // 
             input_cbox.FormattingEnabled = true;
-            input_cbox.Location = new Point(93, 182);
+            input_cbox.Location = new Point(69, 178);
             input_cbox.Name = "input_cbox";
-            input_cbox.Size = new Size(121, 23);
+            input_cbox.Size = new Size(176, 23);
             input_cbox.TabIndex = 0;
+            input_cbox.SelectedIndexChanged += input_cbox_SelectedIndexChanged;
             // 
             // label1
             // 
@@ -57,10 +58,11 @@
             // output_cbox
             // 
             output_cbox.FormattingEnabled = true;
-            output_cbox.Location = new Point(356, 182);
+            output_cbox.Location = new Point(329, 178);
             output_cbox.Name = "output_cbox";
-            output_cbox.Size = new Size(121, 23);
+            output_cbox.Size = new Size(176, 23);
             output_cbox.TabIndex = 2;
+            output_cbox.SelectedIndexChanged += output_cbox_SelectedIndexChanged;
             // 
             // label2
             // 
