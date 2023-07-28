@@ -64,12 +64,13 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ActiveCaption;
+            BackColor = Color.SeaShell;
             ClientSize = new Size(800, 450);
             Controls.Add(button1);
             Controls.Add(fileName_textBox);
             Controls.Add(label1);
             Name = "InitialForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "InitialForm";
             ResumeLayout(false);
             PerformLayout();

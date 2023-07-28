@@ -40,14 +40,16 @@
             mute_btn = new Button();
             unmute_btn = new Button();
             path_cancel_btn = new Button();
+            settings_btn = new Button();
             SuspendLayout();
             // 
             // Record_btn
             // 
-            Record_btn.BackColor = Color.LightGreen;
-            Record_btn.Location = new Point(12, 335);
+            Record_btn.BackColor = Color.ForestGreen;
+            Record_btn.ForeColor = Color.Snow;
+            Record_btn.Location = new Point(12, 450);
             Record_btn.Name = "Record_btn";
-            Record_btn.Size = new Size(164, 61);
+            Record_btn.Size = new Size(100, 34);
             Record_btn.TabIndex = 0;
             Record_btn.Text = "Start Recorging";
             Record_btn.UseVisualStyleBackColor = false;
@@ -56,9 +58,10 @@
             // Stop_btn
             // 
             Stop_btn.BackColor = Color.IndianRed;
-            Stop_btn.Location = new Point(12, 411);
+            Stop_btn.ForeColor = Color.Snow;
+            Stop_btn.Location = new Point(12, 490);
             Stop_btn.Name = "Stop_btn";
-            Stop_btn.Size = new Size(164, 61);
+            Stop_btn.Size = new Size(100, 34);
             Stop_btn.TabIndex = 1;
             Stop_btn.Text = "Stop Recording";
             Stop_btn.UseVisualStyleBackColor = false;
@@ -67,9 +70,10 @@
             // play_btn
             // 
             play_btn.BackColor = Color.CornflowerBlue;
-            play_btn.Location = new Point(152, 488);
+            play_btn.ForeColor = Color.Snow;
+            play_btn.Location = new Point(242, 490);
             play_btn.Name = "play_btn";
-            play_btn.Size = new Size(164, 61);
+            play_btn.Size = new Size(100, 34);
             play_btn.TabIndex = 2;
             play_btn.Text = "Play Audio";
             play_btn.UseVisualStyleBackColor = false;
@@ -78,9 +82,10 @@
             // pause_btn
             // 
             pause_btn.BackColor = Color.Coral;
-            pause_btn.Location = new Point(322, 488);
+            pause_btn.ForeColor = Color.Snow;
+            pause_btn.Location = new Point(348, 491);
             pause_btn.Name = "pause_btn";
-            pause_btn.Size = new Size(164, 61);
+            pause_btn.Size = new Size(100, 34);
             pause_btn.TabIndex = 3;
             pause_btn.Text = "Pause Audio";
             pause_btn.UseVisualStyleBackColor = false;
@@ -108,22 +113,23 @@
             // 
             // path_btn
             // 
+            path_btn.BackColor = Color.DarkSeaGreen;
             path_btn.Location = new Point(271, 189);
             path_btn.Name = "path_btn";
-            path_btn.Size = new Size(112, 50);
+            path_btn.Size = new Size(112, 40);
             path_btn.TabIndex = 6;
             path_btn.Text = "OK";
-            path_btn.UseVisualStyleBackColor = true;
+            path_btn.UseVisualStyleBackColor = false;
             path_btn.Visible = false;
             path_btn.Click += path_btn_Click;
             // 
             // stop_buttn
             // 
             stop_buttn.BackColor = Color.Brown;
-            stop_buttn.ForeColor = SystemColors.ControlText;
-            stop_buttn.Location = new Point(492, 488);
+            stop_buttn.ForeColor = Color.Snow;
+            stop_buttn.Location = new Point(454, 493);
             stop_buttn.Name = "stop_buttn";
-            stop_buttn.Size = new Size(164, 61);
+            stop_buttn.Size = new Size(100, 34);
             stop_buttn.TabIndex = 7;
             stop_buttn.Text = "Stop Audio";
             stop_buttn.UseVisualStyleBackColor = false;
@@ -133,7 +139,7 @@
             // 
             musicname_txt.AutoSize = true;
             musicname_txt.Font = new Font("Segoe UI", 25F, FontStyle.Regular, GraphicsUnit.Point);
-            musicname_txt.Location = new Point(138, 246);
+            musicname_txt.Location = new Point(115, 271);
             musicname_txt.Name = "musicname_txt";
             musicname_txt.Size = new Size(34, 46);
             musicname_txt.TabIndex = 8;
@@ -144,9 +150,10 @@
             // mute_btn
             // 
             mute_btn.BackColor = Color.BlueViolet;
-            mute_btn.Location = new Point(636, 335);
+            mute_btn.ForeColor = Color.Snow;
+            mute_btn.Location = new Point(648, 453);
             mute_btn.Name = "mute_btn";
-            mute_btn.Size = new Size(136, 58);
+            mute_btn.Size = new Size(100, 34);
             mute_btn.TabIndex = 9;
             mute_btn.Text = "Mute";
             mute_btn.UseVisualStyleBackColor = false;
@@ -155,9 +162,10 @@
             // unmute_btn
             // 
             unmute_btn.BackColor = Color.MediumSeaGreen;
-            unmute_btn.Location = new Point(636, 411);
+            unmute_btn.ForeColor = Color.Snow;
+            unmute_btn.Location = new Point(648, 493);
             unmute_btn.Name = "unmute_btn";
-            unmute_btn.Size = new Size(136, 58);
+            unmute_btn.Size = new Size(100, 34);
             unmute_btn.TabIndex = 10;
             unmute_btn.Text = "Unmute";
             unmute_btn.UseVisualStyleBackColor = false;
@@ -165,20 +173,34 @@
             // 
             // path_cancel_btn
             // 
+            path_cancel_btn.BackColor = Color.DarkSeaGreen;
             path_cancel_btn.Location = new Point(417, 189);
             path_cancel_btn.Name = "path_cancel_btn";
-            path_cancel_btn.Size = new Size(112, 50);
+            path_cancel_btn.Size = new Size(112, 40);
             path_cancel_btn.TabIndex = 11;
             path_cancel_btn.Text = "Cancel";
-            path_cancel_btn.UseVisualStyleBackColor = true;
+            path_cancel_btn.UseVisualStyleBackColor = false;
             path_cancel_btn.Visible = false;
             path_cancel_btn.Click += cancel_btn_Click;
+            // 
+            // settings_btn
+            // 
+            settings_btn.BackColor = Color.SteelBlue;
+            settings_btn.Location = new Point(12, 32);
+            settings_btn.Name = "settings_btn";
+            settings_btn.Size = new Size(100, 34);
+            settings_btn.TabIndex = 12;
+            settings_btn.Text = "Settings";
+            settings_btn.UseVisualStyleBackColor = false;
+            settings_btn.Click += settings_btn_Click;
             // 
             // DigitalAudioWorkstation
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.SeaShell;
             ClientSize = new Size(784, 561);
+            Controls.Add(settings_btn);
             Controls.Add(path_cancel_btn);
             Controls.Add(unmute_btn);
             Controls.Add(mute_btn);
@@ -192,6 +214,7 @@
             Controls.Add(Stop_btn);
             Controls.Add(Record_btn);
             Name = "DigitalAudioWorkstation";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             ResumeLayout(false);
             PerformLayout();
@@ -211,5 +234,6 @@
         private Button mute_btn;
         private Button unmute_btn;
         private Button path_cancel_btn;
+        private Button settings_btn;
     }
 }

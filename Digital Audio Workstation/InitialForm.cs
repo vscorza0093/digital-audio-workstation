@@ -12,6 +12,8 @@ namespace Digital_Audio_Workstation
 {
     public partial class InitialForm : Form
     {
+        private int InputAudioDevice;
+        private int OutputAudioDevice;
         public string fileName;
 
         public InitialForm()

@@ -112,5 +112,10 @@ namespace Digital_Audio_Workstation
             baseDAWFunctionalities.UnMute();
         }
 
+        private void settings_btn_Click(object sender, EventArgs e)
+        {
+            var settingsForm = new IOSettings();
+            settingsForm.Show();
+        }
     }
 }
