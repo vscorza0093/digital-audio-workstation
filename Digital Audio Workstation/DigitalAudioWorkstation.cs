@@ -9,6 +9,10 @@ namespace Digital_Audio_Workstation
 {
     public partial class DigitalAudioWorkstation : Form
     {
+        const string waitingToRec = "Aguardando...";
+        const string recording = "Gravando";
+        const string pausedRec = "Pausado";
+
         BaseDAWFunctionalities baseDAWFunctionalities = new BaseDAWFunctionalities();
         private string fileName;
         public string filePath;
@@ -17,14 +21,12 @@ namespace Digital_Audio_Workstation
         bool isRecording = false;
         bool isRecordPaused = false;
 
-        private int counter = 0;
-
         System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
 
         public DigitalAudioWorkstation(string fileName)
         {
             InitializeComponent();
-            rec_text.Text = "Aguardando";
+            rec_text.Text = waitingToRec.ToString();
             this.fileName = fileName;
         }
 
@@ -32,45 +34,59 @@ namespace Digital_Audio_Workstation
         {
             if (!isRecording && !isRecordPaused)
             {
-                isRecordPaused = false;
-                isRecording = true;
-                baseDAWFunctionalities.Record(this.fileName);
-                rec_text.Text = "Gravando";
-                start_record_btn.Text = "Recording";
+                StartRecording();
             }
             else if (isRecording && isRecordPaused)
             {
-                start_record_btn.Text = "Recording";
-                pause_record_btn.Text = "Pause Recording";
-                isRecordPaused = false;
-                rec_text.Text = "Gravando";
-                baseDAWFunctionalities.ResumeRecord();
+                ResumeRecording();
             }
-            else
-            {
+        }
 
-            }
+        private void StartRecording()
+        {
+            rec_text.Text = recording.ToString();
+            start_record_btn.Text = "Recording";
+            isRecordPaused = false;
+            isRecording = true;
+            baseDAWFunctionalities.Record(this.fileName);
+        }
+
+        private void ResumeRecording()
+        {
+            start_record_btn.Text = "Recording";
+            pause_record_btn.Text = "Pause Recording";
+            rec_text.Text = recording.ToString();
+            isRecordPaused = false;
+            baseDAWFunctionalities.ResumeRecord();
+        }
+
+        private void PauseRecord()
+        {
+            pause_record_btn.Text = "Resume Recording";
+            start_record_btn.Text = "Resume Recording";
+            rec_text.Text = pausedRec.ToString();
+            isRecordPaused = true;
+            baseDAWFunctionalities.PauseRecording();
+        }
+
+        private bool IsPaused()
+        {
+            return isRecording && isRecordPaused;
+        }
+
+        private bool IsRecording()
+        {
+            return isRecording && !isRecordPaused;
         }
         private void pause_record_btn_Click(object sender, EventArgs e)
         {
-            if (isRecording && !isRecordPaused)
+            if (IsRecording())
             {
-                pause_record_btn.Text = "Resume Recording";
-                start_record_btn.Text = "Resume Recording";
-                isRecordPaused = true;
-                rec_text.Text = "Pausado";
-                baseDAWFunctionalities.PauseRecording();
+                PauseRecord();
             }
-            else if (isRecording && isRecordPaused)
+            else if (IsPaused())
             {
-                start_record_btn.Text = "Recording";
-                pause_record_btn.Text = "Pause Recording";
-                isRecordPaused = false;
-                rec_text.Text = "Gravando";
-                baseDAWFunctionalities.ResumeRecord();
-            }
-            else
-            {
+                ResumeRecording();
             }
         }
 
