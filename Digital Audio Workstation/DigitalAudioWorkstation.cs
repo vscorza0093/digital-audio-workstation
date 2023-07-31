@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.Diagnostics;
+using System.DirectoryServices;
 using NAudio;
 using NAudio.Wave;
 
@@ -12,25 +14,75 @@ namespace Digital_Audio_Workstation
         public string filePath;
         bool isFirstPlay = true;
         bool musicIsPlaying = false;
+        bool isRecording = false;
+        bool isRecordPaused = false;
+
+        private int counter = 0;
+
+        System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
 
         public DigitalAudioWorkstation(string fileName)
         {
             InitializeComponent();
+            rec_text.Text = "Aguardando";
             this.fileName = fileName;
         }
 
-
-        private void Record_btn_Click(object sender, EventArgs e)
+        private void start_record_btn_Click(object sender, EventArgs e)
         {
-            baseDAWFunctionalities.Record(this.fileName);
+            if (!isRecording && !isRecordPaused)
+            {
+                isRecordPaused = false;
+                isRecording = true;
+                baseDAWFunctionalities.Record(this.fileName);
+                rec_text.Text = "Gravando";
+                start_record_btn.Text = "Recording";
+            }
+            else if (isRecording && isRecordPaused)
+            {
+                start_record_btn.Text = "Recording";
+                pause_record_btn.Text = "Pause Recording";
+                isRecordPaused = false;
+                rec_text.Text = "Gravando";
+                baseDAWFunctionalities.ResumeRecord();
+            }
+            else
+            {
+
+            }
+        }
+        private void pause_record_btn_Click(object sender, EventArgs e)
+        {
+            if (isRecording && !isRecordPaused)
+            {
+                pause_record_btn.Text = "Resume Recording";
+                start_record_btn.Text = "Resume Recording";
+                isRecordPaused = true;
+                rec_text.Text = "Pausado";
+                baseDAWFunctionalities.PauseRecording();
+            }
+            else if (isRecording && isRecordPaused)
+            {
+                start_record_btn.Text = "Recording";
+                pause_record_btn.Text = "Pause Recording";
+                isRecordPaused = false;
+                rec_text.Text = "Gravando";
+                baseDAWFunctionalities.ResumeRecord();
+            }
+            else
+            {
+            }
         }
 
-        private void Stop_btn_Click(object sender, EventArgs e)
+        private void stop_record_btn_Click(object sender, EventArgs e)
         {
-            baseDAWFunctionalities.StopRecording();
+            if (isRecording)
+            {
+                baseDAWFunctionalities.StopRecording();
+            }
         }
 
-        private void play_btn_Click(object sender, EventArgs e)
+        private void play_audio_btn_Click(object sender, EventArgs e)
         {
             if (!musicIsPlaying && isFirstPlay)
             {
@@ -46,7 +98,7 @@ namespace Digital_Audio_Workstation
             }
         }
 
-        private void pause_btn_Click(object sender, EventArgs e)
+        private void pause_audio_btn_Click(object sender, EventArgs e)
         {
             if (musicIsPlaying)
             {
@@ -54,7 +106,7 @@ namespace Digital_Audio_Workstation
                 musicIsPlaying = false;
             }
         }
-        private void stop_buttn_Click(object sender, EventArgs e)
+        private void stop_audio_btn_Click(object sender, EventArgs e)
         {
             if (musicIsPlaying)
             {
@@ -117,5 +169,6 @@ namespace Digital_Audio_Workstation
             var settingsForm = new IOSettings();
             settingsForm.Show();
         }
+
     }
 }

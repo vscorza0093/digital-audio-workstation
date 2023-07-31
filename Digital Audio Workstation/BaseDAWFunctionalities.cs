@@ -10,7 +10,7 @@ namespace Digital_Audio_Workstation
         WaveFileWriter writer;
         WaveInEvent wave = new WaveInEvent();
         WaveOut waveOut;
-        
+
         public void Play(string filePath)
         {
             waveOut = new WaveOut();
@@ -63,6 +63,17 @@ namespace Digital_Audio_Workstation
             wave.RecordingStopped += Wave_RecordingStopped;
             wave.StartRecording();
         }
+
+        public void ResumeRecord()
+        {
+            wave.DataAvailable += Wave_DataAvailable;
+        }
+
+        public void PauseRecording()
+        {
+            wave.DataAvailable -= Wave_DataAvailable;
+        }
+
 
         public void StopRecording()
         {
