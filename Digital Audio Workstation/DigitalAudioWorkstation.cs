@@ -9,9 +9,11 @@ namespace Digital_Audio_Workstation
 {
     public partial class DigitalAudioWorkstation : Form
     {
-        const string waitingToRec = "Aguardando...";
-        const string recording = "Gravando";
-        const string pausedRec = "Pausado";
+        const string waitingToRec = "Waiting...";
+        const string recording = "Recording";
+        const string paused = "Paused";
+        const string pauseRecording = "Pause Recording";
+        const string resumeRecording = "Resume Recording";
 
         BaseDAWFunctionalities baseDAWFunctionalities = new BaseDAWFunctionalities();
         private string fileName;
@@ -27,25 +29,37 @@ namespace Digital_Audio_Workstation
         {
             InitializeComponent();
             rec_text.Text = waitingToRec.ToString();
+            volume_bar.Value = 100;
             this.fileName = fileName;
         }
 
         private void start_record_btn_Click(object sender, EventArgs e)
         {
-            if (!isRecording && !isRecordPaused)
-            {
+            if (IsNotRecording())
                 StartRecording();
-            }
-            else if (isRecording && isRecordPaused)
-            {
+
+            else if (IsPaused())
                 ResumeRecording();
-            }
+        }
+        private void pause_record_btn_Click(object sender, EventArgs e)
+        {
+            if (IsRecordingAndNotPaused())
+                PauseRecord();
+
+            else if (IsPaused())
+                ResumeRecording();
+        }
+
+        private void stop_record_btn_Click(object sender, EventArgs e)
+        {
+            if (IsRecordingAndNotPaused())
+                StopRecord();
         }
 
         private void StartRecording()
         {
-            rec_text.Text = recording.ToString();
-            start_record_btn.Text = "Recording";
+            rec_text.Text = recording;
+            start_record_btn.Text = recording;
             isRecordPaused = false;
             isRecording = true;
             baseDAWFunctionalities.Record(this.fileName);
@@ -53,8 +67,8 @@ namespace Digital_Audio_Workstation
 
         private void ResumeRecording()
         {
-            start_record_btn.Text = "Recording";
-            pause_record_btn.Text = "Pause Recording";
+            start_record_btn.Text = recording;
+            pause_record_btn.Text = pauseRecording;
             rec_text.Text = recording.ToString();
             isRecordPaused = false;
             baseDAWFunctionalities.ResumeRecord();
@@ -62,11 +76,21 @@ namespace Digital_Audio_Workstation
 
         private void PauseRecord()
         {
-            pause_record_btn.Text = "Resume Recording";
-            start_record_btn.Text = "Resume Recording";
-            rec_text.Text = pausedRec.ToString();
+            pause_record_btn.Text = resumeRecording;
+            start_record_btn.Text = resumeRecording;
+            rec_text.Text = paused;
             isRecordPaused = true;
             baseDAWFunctionalities.PauseRecording();
+        }
+
+        private void StopRecord()
+        {
+            baseDAWFunctionalities.StopRecording();
+        }
+
+        private bool IsNotRecording()
+        {
+            return !isRecording && !isRecordPaused;
         }
 
         private bool IsPaused()
@@ -74,28 +98,9 @@ namespace Digital_Audio_Workstation
             return isRecording && isRecordPaused;
         }
 
-        private bool IsRecording()
+        private bool IsRecordingAndNotPaused()
         {
             return isRecording && !isRecordPaused;
-        }
-        private void pause_record_btn_Click(object sender, EventArgs e)
-        {
-            if (IsRecording())
-            {
-                PauseRecord();
-            }
-            else if (IsPaused())
-            {
-                ResumeRecording();
-            }
-        }
-
-        private void stop_record_btn_Click(object sender, EventArgs e)
-        {
-            if (isRecording)
-            {
-                baseDAWFunctionalities.StopRecording();
-            }
         }
 
         private void play_audio_btn_Click(object sender, EventArgs e)
@@ -172,12 +177,12 @@ namespace Digital_Audio_Workstation
 
         private void mute_btn_Click(object sender, EventArgs e)
         {
-            baseDAWFunctionalities.Mute();
+            MutePlayingAudio();
         }
 
         private void unmute_btn_Click(object sender, EventArgs e)
         {
-            baseDAWFunctionalities.UnMute();
+            UnMutePlayingAudio();
         }
 
         private void settings_btn_Click(object sender, EventArgs e)
@@ -186,5 +191,20 @@ namespace Digital_Audio_Workstation
             settingsForm.Show();
         }
 
+        private void MutePlayingAudio()
+        {
+            baseDAWFunctionalities.Mute();
+        }
+
+        private void UnMutePlayingAudio()
+        {
+            baseDAWFunctionalities.UnMute();
+        }
+
+        private void volume_bar_Scroll(object sender, EventArgs e)
+        {
+            var wo = new WaveOutEvent();
+            volume_bar.Scroll += (s, a) => wo.Volume = volume_bar.Value / 100f;
+        }
     }
 }

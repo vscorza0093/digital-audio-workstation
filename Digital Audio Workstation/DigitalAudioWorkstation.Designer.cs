@@ -43,13 +43,19 @@
             settings_btn = new Button();
             pause_record_btn = new Button();
             rec_text = new Label();
+            volume_bar = new TrackBar();
+            label1 = new Label();
+            label2 = new Label();
+            panel1 = new Panel();
+            ((System.ComponentModel.ISupportInitialize)volume_bar).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // start_record_btn
             // 
-            start_record_btn.BackColor = Color.ForestGreen;
+            start_record_btn.BackColor = Color.DarkGray;
             start_record_btn.ForeColor = Color.Snow;
-            start_record_btn.Location = new Point(12, 406);
+            start_record_btn.Location = new Point(15, 18);
             start_record_btn.Name = "start_record_btn";
             start_record_btn.Size = new Size(150, 34);
             start_record_btn.TabIndex = 0;
@@ -59,9 +65,9 @@
             // 
             // stop_record_btn
             // 
-            stop_record_btn.BackColor = Color.IndianRed;
+            stop_record_btn.BackColor = Color.DarkGray;
             stop_record_btn.ForeColor = Color.Snow;
-            stop_record_btn.Location = new Point(12, 446);
+            stop_record_btn.Location = new Point(15, 58);
             stop_record_btn.Name = "stop_record_btn";
             stop_record_btn.Size = new Size(150, 34);
             stop_record_btn.TabIndex = 1;
@@ -71,9 +77,9 @@
             // 
             // play_audio_btn
             // 
-            play_audio_btn.BackColor = Color.CornflowerBlue;
+            play_audio_btn.BackColor = Color.DarkGray;
             play_audio_btn.ForeColor = Color.Snow;
-            play_audio_btn.Location = new Point(242, 490);
+            play_audio_btn.Location = new Point(177, 276);
             play_audio_btn.Name = "play_audio_btn";
             play_audio_btn.Size = new Size(100, 34);
             play_audio_btn.TabIndex = 2;
@@ -83,9 +89,9 @@
             // 
             // pause_audio_btn
             // 
-            pause_audio_btn.BackColor = Color.Coral;
+            pause_audio_btn.BackColor = Color.DarkGray;
             pause_audio_btn.ForeColor = Color.Snow;
-            pause_audio_btn.Location = new Point(348, 491);
+            pause_audio_btn.Location = new Point(283, 276);
             pause_audio_btn.Name = "pause_audio_btn";
             pause_audio_btn.Size = new Size(100, 34);
             pause_audio_btn.TabIndex = 3;
@@ -95,11 +101,11 @@
             // 
             // select_btn
             // 
-            select_btn.BackColor = Color.DarkCyan;
-            select_btn.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            select_btn.Location = new Point(206, 32);
+            select_btn.BackColor = Color.DarkGray;
+            select_btn.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            select_btn.Location = new Point(314, 23);
             select_btn.Name = "select_btn";
-            select_btn.Size = new Size(380, 87);
+            select_btn.Size = new Size(167, 49);
             select_btn.TabIndex = 4;
             select_btn.Text = "Select Music To Play";
             select_btn.UseVisualStyleBackColor = false;
@@ -107,7 +113,7 @@
             // 
             // path_textbox
             // 
-            path_textbox.Location = new Point(206, 146);
+            path_textbox.Location = new Point(199, 92);
             path_textbox.Name = "path_textbox";
             path_textbox.Size = new Size(380, 23);
             path_textbox.TabIndex = 5;
@@ -115,8 +121,8 @@
             // 
             // path_btn
             // 
-            path_btn.BackColor = Color.DarkSeaGreen;
-            path_btn.Location = new Point(271, 189);
+            path_btn.BackColor = Color.DarkGray;
+            path_btn.Location = new Point(264, 135);
             path_btn.Name = "path_btn";
             path_btn.Size = new Size(112, 40);
             path_btn.TabIndex = 6;
@@ -127,9 +133,9 @@
             // 
             // stop_audio_btn
             // 
-            stop_audio_btn.BackColor = Color.Brown;
+            stop_audio_btn.BackColor = Color.DarkGray;
             stop_audio_btn.ForeColor = Color.Snow;
-            stop_audio_btn.Location = new Point(454, 493);
+            stop_audio_btn.Location = new Point(389, 276);
             stop_audio_btn.Name = "stop_audio_btn";
             stop_audio_btn.Size = new Size(100, 34);
             stop_audio_btn.TabIndex = 7;
@@ -140,10 +146,11 @@
             // musicname_txt
             // 
             musicname_txt.AutoSize = true;
-            musicname_txt.Font = new Font("Segoe UI", 25F, FontStyle.Regular, GraphicsUnit.Point);
-            musicname_txt.Location = new Point(115, 271);
+            musicname_txt.BackColor = Color.FromArgb(0, 0, 0, 1);
+            musicname_txt.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            musicname_txt.Location = new Point(177, 211);
             musicname_txt.Name = "musicname_txt";
-            musicname_txt.Size = new Size(34, 46);
+            musicname_txt.Size = new Size(20, 28);
             musicname_txt.TabIndex = 8;
             musicname_txt.Text = "-";
             musicname_txt.TextAlign = ContentAlignment.MiddleCenter;
@@ -151,9 +158,9 @@
             // 
             // mute_btn
             // 
-            mute_btn.BackColor = Color.BlueViolet;
+            mute_btn.BackColor = Color.DarkGray;
             mute_btn.ForeColor = Color.Snow;
-            mute_btn.Location = new Point(648, 453);
+            mute_btn.Location = new Point(558, 236);
             mute_btn.Name = "mute_btn";
             mute_btn.Size = new Size(100, 34);
             mute_btn.TabIndex = 9;
@@ -163,9 +170,9 @@
             // 
             // unmute_btn
             // 
-            unmute_btn.BackColor = Color.MediumSeaGreen;
+            unmute_btn.BackColor = Color.DarkGray;
             unmute_btn.ForeColor = Color.Snow;
-            unmute_btn.Location = new Point(648, 493);
+            unmute_btn.Location = new Point(558, 276);
             unmute_btn.Name = "unmute_btn";
             unmute_btn.Size = new Size(100, 34);
             unmute_btn.TabIndex = 10;
@@ -175,8 +182,8 @@
             // 
             // path_cancel_btn
             // 
-            path_cancel_btn.BackColor = Color.DarkSeaGreen;
-            path_cancel_btn.Location = new Point(417, 189);
+            path_cancel_btn.BackColor = Color.DarkGray;
+            path_cancel_btn.Location = new Point(410, 135);
             path_cancel_btn.Name = "path_cancel_btn";
             path_cancel_btn.Size = new Size(112, 40);
             path_cancel_btn.TabIndex = 11;
@@ -198,9 +205,9 @@
             // 
             // pause_record_btn
             // 
-            pause_record_btn.BackColor = Color.LightSeaGreen;
+            pause_record_btn.BackColor = Color.DarkGray;
             pause_record_btn.ForeColor = Color.Snow;
-            pause_record_btn.Location = new Point(12, 486);
+            pause_record_btn.Location = new Point(15, 98);
             pause_record_btn.Name = "pause_record_btn";
             pause_record_btn.Size = new Size(150, 34);
             pause_record_btn.TabIndex = 13;
@@ -211,20 +218,62 @@
             // rec_text
             // 
             rec_text.AutoSize = true;
-            rec_text.Location = new Point(369, 345);
+            rec_text.Location = new Point(388, 399);
             rec_text.Name = "rec_text";
             rec_text.Size = new Size(38, 15);
             rec_text.TabIndex = 14;
             rec_text.Text = "label1";
+            // 
+            // volume_bar
+            // 
+            volume_bar.Location = new Point(101, 135);
+            volume_bar.Maximum = 100;
+            volume_bar.Name = "volume_bar";
+            volume_bar.Orientation = Orientation.Vertical;
+            volume_bar.RightToLeft = RightToLeft.No;
+            volume_bar.Size = new Size(45, 175);
+            volume_bar.TabIndex = 15;
+            volume_bar.Scroll += volume_bar_Scroll;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(133, 285);
+            label1.Name = "label1";
+            label1.Size = new Size(13, 15);
+            label1.TabIndex = 16;
+            label1.Text = "0";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(126, 139);
+            label2.Name = "label2";
+            label2.Size = new Size(25, 15);
+            label2.TabIndex = 17;
+            label2.Text = "100";
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.LightSlateGray;
+            panel1.Controls.Add(stop_record_btn);
+            panel1.Controls.Add(start_record_btn);
+            panel1.Controls.Add(pause_record_btn);
+            panel1.Location = new Point(30, 331);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(729, 148);
+            panel1.TabIndex = 18;
             // 
             // DigitalAudioWorkstation
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SeaShell;
-            ClientSize = new Size(784, 561);
+            ClientSize = new Size(784, 500);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(volume_bar);
             Controls.Add(rec_text);
-            Controls.Add(pause_record_btn);
             Controls.Add(settings_btn);
             Controls.Add(path_cancel_btn);
             Controls.Add(unmute_btn);
@@ -236,11 +285,12 @@
             Controls.Add(select_btn);
             Controls.Add(pause_audio_btn);
             Controls.Add(play_audio_btn);
-            Controls.Add(stop_record_btn);
-            Controls.Add(start_record_btn);
+            Controls.Add(panel1);
             Name = "DigitalAudioWorkstation";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)volume_bar).EndInit();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -262,5 +312,9 @@
         private Button settings_btn;
         private Button pause_record_btn;
         private Label rec_text;
+        private TrackBar volume_bar;
+        private Label label1;
+        private Label label2;
+        private Panel panel1;
     }
 }
